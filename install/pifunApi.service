@@ -1,0 +1,18 @@
+[Unit]
+Description=piFunApi
+After=network.target
+
+#log with journalctl -u piFunApi.service
+#cp /home/pi/pifun_socket/piFunApi.service /etc/systemd/system/piFunApi.service
+[Service]
+#EnvironmentFile=######
+ExecStart=/usr/local/bin/node /home/pi/pifun_socket/index.js 
+WorkingDirectory=/home/pi/pifun_socket
+StandardOutput=inherit
+StandardError=inherit
+Restart=always
+User=pi
+Group=netdev
+
+[Install]
+WantedBy=multi-user.target
